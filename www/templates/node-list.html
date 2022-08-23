@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block instructions %}
+  <h2>
+    {{ title }}
+  </h2>
+{% endblock %}
+
+{% block body %}
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><h6>Node</h6></th>
+        <th><h6>Prefix</h6></th>
+        <th><h6>Actions</h6></th>
+      </tr>
+    </thead>
+    {% for node in nodes %}
+      <tr class="{% if loop.index % 2 %}odd{% else %}even{% endif %}">
+        <td><p>{{ node.node_name }}</td>
+        <td><p>{{ node.node_prefix }}</td>
+        <td>
+          <a href="{{ url_for("node.edit", id=node._id) }}">Edit</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="{{ url_for("node.delete", id=node._id) }}">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="{{ url_for('node.add') }}">Add new</a>
+
+{% endblock %}
+
+</html>

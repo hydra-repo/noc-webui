@@ -1,0 +1,7 @@
+Flask
+flask_wtf
+flask_pymongo
+email-validator
+python-ndn
+wtforms
+

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block instructions %}
+<h2>
+{{ title }}
+</h2>
+{% endblock %}
+
+{% block body %}
+
+<form method="POST">
+  {% macro with_errors(field) %}
+    <div class="form_field">
+      {% if field.errors %}
+        {% set css_class = 'error' %}
+        {{ field.label }}
+        {{ field(class=css_class, **kwargs) }}
+        <span class="error">{{ ', '.join(field.errors) }}</span>
+    {% else %}
+        {{ field.label }}
+        {{ field }}
+    {% endif %}
+    </div>
+{% endmacro %}
+
+{% for field in form %}
+  {% if field.type == "HiddenField" %}
+    {{ field }}
+  {% else %}
+    {{ with_errors(field) }}
+  {% endif %}
+{% endfor %}
+
+<input type="submit" value="Submit"></input>
+
+</form>
+
+{% endblock %}
+
+</html>

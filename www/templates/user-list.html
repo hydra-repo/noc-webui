@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block instructions %}
+  <h2>
+    {{ title }}
+  </h2>
+{% endblock %}
+
+{% block body %}
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><h6>Name</h6></th>
+        <th scope="col"><h6>Email</h6></th>
+        <th scope="col"><h6>Namespace</h6></th>
+        <th><h6>Actions</h6></th>
+      </tr>
+    </thead>
+    {% for user in users %}
+      <tr>
+        <td><p>{{ user.name }}</td>
+        <td><p>{{ user.email }}</td>
+        <td><p>{{ user.namespace }}</td>
+        <td>
+          <a href="{{ url_for("user.edit", id=user._id) }}">Edit</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="{{ url_for("user.delete", id=user._id) }}">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="{{ url_for('user.add') }}">Add new</a>
+
+{% endblock %}
+
+</html>
