@@ -21,6 +21,7 @@
 #html/rest
 from flask import Flask, jsonify, abort, make_response, request, render_template
 from flask_pymongo import PyMongo
+from flask_login import login_user, logout_user, LoginManager
 
 import os
 import string
@@ -50,8 +51,19 @@ app.mongo = mongo
 
 from .node import node
 from .user import user
+from .auth import auth
 app.register_blueprint(node)
 app.register_blueprint(user)
+app.register_blueprint(auth)
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(username):
+    return current_app.mongo.db.users.find_one({'email': username})
+
 
 #############################################################################################
 # User-facing components

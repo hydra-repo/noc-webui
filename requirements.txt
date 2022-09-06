@@ -4,4 +4,6 @@ flask_pymongo
 email-validator
 python-ndn
 wtforms
-
+google-auth
+passlib
+flask_login
