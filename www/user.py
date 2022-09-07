@@ -14,7 +14,7 @@ from wtforms.validators import InputRequired, Email, EqualTo, ValidationError
 from passlib.hash import pbkdf2_sha256
 
 class UserForm(Form):
-    id          = HiddenField(label="", id="_id", name="_id")
+    id           = HiddenField(label="", id="_id")
     email        = StringField('Email (will be username)', [InputRequired(), Email()])
     passw        = PasswordField('New Password', [EqualTo('passw2', message='Passwords must match')])
     passw2       = PasswordField('Confirm Password')
@@ -68,6 +68,7 @@ def edit(id):
         form = UserForm(request.form)
     else:
         user = current_app.mongo.db.users.find_one({'_id': ObjectId(id)})
+        user['id'] = user['_id']
         form = UserForm(User(user))
 
     if request.method == 'POST' and form.validate():
