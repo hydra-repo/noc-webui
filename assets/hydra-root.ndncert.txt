@@ -1,0 +1,12 @@
+Certificate name:
+  /hydra/KEY/%F5a%E9%A2t%08.%B6/self/v=1662566656290
+Validity:
+  NotBefore: 19700101T000000
+  NotAfter: 20420902T160416
+Public key bits:
+  MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEiBFL1pCoqWyPD3EiOFALiMVgnK63
+  hKag86YngJj4/qBYN7+6M8ZJwpdRBPSr7uFW64Eb9mSh/Y9paEdoZ8dgDA==
+Signature Information:
+  Signature Type: SignatureSha256WithEcdsa
+  Key Locator: Self-Signed Name=/hydra/KEY/%F5a%E9%A2t%08.%B6
+
